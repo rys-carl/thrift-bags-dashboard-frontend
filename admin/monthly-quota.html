@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard (Prototype)</title>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="navbar bg-black text-white p-3" id="main-header">
+        <div class="container-fluid">
+            <button class="btn text-white" id="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" aria-label="Toggle menu">
+                <i class="fas fa-bars fa-2xl"></i>
+            </button>
+            <div class="d-flex ms-auto" id="notification">
+                <button class="btn text-white me-3" data-bs-toggle="modal" data-bs-target="#notification-modal">
+                    <i class="fas fa-bell fa-xl"></i>
+                </button>
+                <button class="btn text-white" id="profile">
+                    <i class="fa-regular fa-circle-user fa-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="width: 16rem;">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body mt-0 pt-0">
+                <ul class="list-unstyled">
+                    <li class="dropdown sidebar-item">
+                        <a href="../admin/dashboard.html" class="text-dark d-flex align-items-center" style="width: 100%;">
+                            <i class="fa-solid fa-chart-line mx-2" style="color: #000000;"></i>Dashboard
+                        </a>
+                    </li>
+
+                    <li class="dropdown sidebar-item">
+                        <a href="#" class="text-dark dropdown-toggle" id="inventoryDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-boxes-stacked mx-2" style="color: #000000;"></i>Inventory
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end mt-2 p-0" aria-labelledby="inventoryDropdown" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);">
+                            <li><a class="dropdown-item" href="../admin/inventory-overview.html">Overview</a></li>
+                            <li><a class="dropdown-item" href="../admin/restock.html">Restock</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown sidebar-item">
+                        <a href=" " class="text-dark d-flex align-items-center" style="width: 100%;">
+                            <i class="fa-solid fa-cart-shopping mx-2" style="color: #000000;"></i>Orders
+                        </a>
+                    </li>
+                    <li class="dropdown sidebar-item">
+                        <a href="../admin/accounts.html" class="text-dark d-flex align-items-center" style="width: 100%;">
+                            <i class="fa-solid fa-user-group mx-2" style="color: #000000;"></i>Accounts
+                        </a>
+                    </li>
+                    <li class="dropdown sidebar-item">
+                        <a href="../admin/reports.html" class="text-dark d-flex align-items-center" style="width: 100%;">
+                            <i class="fa-solid fa-chart-bar mx-2" style="color: #000000;"></i>Reports
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Notification Modal -->
+    <div class="modal fade" id="notification-modal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="border-bottom: none;">
+                    <h5 class="modal-title fw-bold fs-3" id="notificationModalLabel">Notifications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <!-- Placeholder notifs -->
+                    <ul class="list-group p-0">
+                        <li class="list-group-item fw-medium d-flex align-items-end notif-content">
+                            <div class="flex-grow-1">
+                                <div class="fw-bold">
+                                    <i class="fa-solid fa-bell" style="color: #000000;"></i>
+                                    New Order Received
+                                </div>
+                                <div class="text-muted">Order #123456789 placed by John Doe </div>
+                                <a href="" class="fw-bold text-decoration-none text-dark">[View Order]</a>
+                            </div>
+                            <div class="text-muted fst-italic text-end small">Just now</div>
+                        </li>
+
+                        <li class="list-group-item fw-medium d-flex align-items-end notif-content">
+                            <div class="flex-grow-1">
+                                <div class="fw-bold text-warning">
+                                    <i class="fa-solid fa-bell" style="color: #FFD43B;"></i>
+                                    Low Stock Alert
+                                </div>
+                                <div class="text-muted">Only 2 units left of Mini Frances Leather Handbag</div>
+                                <a href="" class="fw-bold text-decoration-none text-dark">[View Order]</a>
+                            </div>
+                            <div class="text-muted fst-italic text-end small">5 minutes ago</div>
+                        </li>
+
+                        <li class="list-group-item fw-medium d-flex align-items-end notif-content">
+                            <div class="flex-grow-1">
+                                <div class="fw-bold text-danger">
+                                    <i class="fa-solid fa-triangle-exclamation" style="color: #E50505;"></i>
+                                    Out of Stock Alert
+                                </div>
+                                <div class="text-muted">Mini Frances Leather Handbag is out of stock</div>
+                                <a href="" class="fw-bold text-decoration-none text-dark">[View Order]</a>
+                            </div>
+                            <div class="text-muted fst-italic text-end small">10 minutes ago</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="p-2 px-4">
+        <section id="monthly-quota"> 
+            <div class="content p-4">
+                <h1 class="fw-bold mb-0">Edit Monthly Quota</h1>
+                
+                <div class="container px-5">
+                    <form action="" method="post">
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <label for="jan" class="form-label fw-bold">January 2024</label>
+                                <input type="text" class="form-control" id="jan" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="feb" class="form-label fw-bold">February 2024</label>
+                                <input type="text" class="form-control" id="feb" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="march" class="form-label fw-bold">March 2024</label>
+                                <input type="text" class="form-control" id="march" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="apr" class="form-label fw-bold">April 2024</label>
+                                <input type="text" class="form-control" id="apr" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="may" class="form-label fw-bold">May 2024</label>
+                                <input type="text" class="form-control" id="may" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="june" class="form-label fw-bold">June 2024</label>
+                                <input type="text" class="form-control" id="june" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="jul" class="form-label fw-bold">July 2024</label>
+                                <input type="text" class="form-control" id="jul" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="aug" class="form-label fw-bold">August 2024</label>
+                                <input type="text" class="form-control" id="aug" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="sept" class="form-label fw-bold">September 2024</label>
+                                <input type="text" class="form-control" id="sept" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="oct" class="form-label fw-bold">October 2024</label>
+                                <input type="text" class="form-control" id="oct" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nov" class="form-label fw-bold">November 2024</label>
+                                <input type="text" class="form-control" id="nov" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dec" class="form-label fw-bold">December 2024</label>
+                                <input type="text" class="form-control" id="dec" placeholder="">
+                            </div>
+                        </div>
+            
+                        <div class="row mt-5">
+                            <div class="col text-end">
+                                <a href="./dashboard.html" class="btn btn-light me-2">Cancel</a>
+                                <!-- NOTE: Change "type=button" to "type=submit" -->
+                                <input type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#edit-success" name="submit" value="Edit Monthly Quota">
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+
+              <!-- Edit Successful Modal -->
+            <div class="custom-modal modal fade" id="edit-success" tabindex="-1" aria-labelledby="editSuccessfulModalLabel" aria-hidden="false">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content p-3">
+                        <div class="modal-header justify-content-center pb-1" style="border-bottom: none;">
+                            <h5 class="modal-title text-success text-center fs-3 fw-light" id="editSuccessfulModalLabel">SAVED</h5>
+                        </div>
+                        <div class="modal-body text-center">
+                            Your monthly quota has been edited successfully!
+                        </div>
+                        <div class="modal-footer justify-content-center text center pt-1" style="border-top: none;">
+                            <a href="./dashboard.html" class="btn btn-dark">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+        <script src="../assets/js/script.js"></script>
+    </footer>
+
+</body>
+
+</html>

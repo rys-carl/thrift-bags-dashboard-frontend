@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard (Prototype)</title>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="navbar bg-black text-white p-3" id="main-header">
+        <div class="container-fluid">
+            <button class="btn text-white" id="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" aria-label="Toggle menu">
+                <i class="fas fa-bars fa-2xl"></i>
+            </button>
+            <div class="d-flex ms-auto" id="notification">
+                <button class="btn text-white me-3" data-bs-toggle="modal" data-bs-target="#notification-modal">
+                    <i class="fas fa-bell fa-xl"></i>
+                </button>
+                <button class="btn text-white" id="profile">
+                    <i class="fa-regular fa-circle-user fa-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="width: 16rem;">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body mt-0 pt-0">
+                <ul class="list-unstyled">
+                    <li class="dropdown sidebar-item">
+                        <a href="../admin/dashboard.html" class="text-dark d-flex align-items-center" style="width: 100%;">
+                            <i class="fa-solid fa-chart-line mx-2" style="color: #000000;"></i>Dashboard
+                        </a>
+                    </li>
+
+                    <li class="dropdown sidebar-item">
+                        <a href="#" class="text-dark dropdown-toggle" id="inventoryDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-boxes-stacked mx-2" style="color: #000000;"></i>Inventory
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end mt-2 p-0" aria-labelledby="inventoryDropdown" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);">
+                            <li><a class="dropdown-item" href="../admin/inventory-overview.html">Overview</a></li>
+                            <li><a class="dropdown-item" href="../admin/restock.html">Restock</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown sidebar-item">
+                        <a href=" " class="text-dark d-flex align-items-center" style="width: 100%;">
+                            <i class="fa-solid fa-cart-shopping mx-2" style="color: #000000;"></i>Orders
+                        </a>
+                    </li>
+                    <li class="dropdown sidebar-item">
+                        <a href="../admin/accounts.html" class="text-dark d-flex align-items-center" style="width: 100%;">
+                            <i class="fa-solid fa-user-group mx-2" style="color: #000000;"></i>Accounts
+                        </a>
+                    </li>
+                    <li class="dropdown sidebar-item">
+                        <a href="../admin/reports.html" class="text-dark d-flex align-items-center" style="width: 100%;">
+                            <i class="fa-solid fa-chart-bar mx-2" style="color: #000000;"></i>Reports
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Notification Modal -->
+    <div class="modal fade" id="notification-modal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="border-bottom: none;">
+                    <h5 class="modal-title fw-bold fs-3" id="notificationModalLabel">Notifications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <!-- Placeholder notifs -->
+                    <ul class="list-group p-0">
+                        <li class="list-group-item fw-medium d-flex align-items-end notif-content">
+                            <div class="flex-grow-1">
+                                <div class="fw-bold">
+                                    <i class="fa-solid fa-bell" style="color: #000000;"></i>
+                                    New Order Received
+                                </div>
+                                <div class="text-muted">Order #123456789 placed by John Doe </div>
+                                <a href="" class="fw-bold text-decoration-none text-dark">[View Order]</a>
+                            </div>
+                            <div class="text-muted fst-italic text-end small">Just now</div>
+                        </li>
+
+                        <li class="list-group-item fw-medium d-flex align-items-end notif-content">
+                            <div class="flex-grow-1">
+                                <div class="fw-bold text-warning">
+                                    <i class="fa-solid fa-bell" style="color: #FFD43B;"></i>
+                                    Low Stock Alert
+                                </div>
+                                <div class="text-muted">Only 2 units left of Mini Frances Leather Handbag</div>
+                                <a href="" class="fw-bold text-decoration-none text-dark">[View Order]</a>
+                            </div>
+                            <div class="text-muted fst-italic text-end small">5 minutes ago</div>
+                        </li>
+
+                        <li class="list-group-item fw-medium d-flex align-items-end notif-content">
+                            <div class="flex-grow-1">
+                                <div class="fw-bold text-danger">
+                                    <i class="fa-solid fa-triangle-exclamation" style="color: #E50505;"></i>
+                                    Out of Stock Alert
+                                </div>
+                                <div class="text-muted">Mini Frances Leather Handbag is out of stock</div>
+                                <a href="" class="fw-bold text-decoration-none text-dark">[View Order]</a>
+                            </div>
+                            <div class="text-muted fst-italic text-end small">10 minutes ago</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="p-2 px-4">
+        <section id="edit-details">
+            <div class="content p-4">
+                <h1 class="fw-bold mb-0">Edit Product Details</h1>
+
+                <form action="" method="post">
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <label for="product-name" class="form-label fw-bold">Product Name</label>
+                            <input type="text" class="form-control" id="product-name" name="product-name" placeholder="Enter product name">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="brand-name" class="form-label fw-bold">Brand Name</label>
+                            <input type="text" class="form-control" id="brand-name" name="brand-name" placeholder="Enter brand name">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="sku" class="form-label fw-bold">SKU</label>
+                            <input type="text" class="form-control" id="sku" name="sku" placeholder="Enter SKU">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="upc" class="form-label fw-bold">UPC</label>
+                            <input type="text" class="form-control" id="upc" name="upc" placeholder="Enter UPC">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="category" class="form-label fw-bold">Category</label>
+                            <input type="text" class="form-control" id="category" name="category" placeholder="Enter bag type">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="color" class="form-label fw-bold">Color</label>
+                            <input type="text" class="form-control" id="color" name="color" placeholder="Enter color">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="condition" class="form-label fw-bold">Condition</label>
+                            <input type="text" class="form-control" id="condition" name="condition" placeholder="Enter condition">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="material" class="form-label fw-bold">Material</label>
+                            <input type="number" class="form-control" id="material" name="material" placeholder="Enter material">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <label for="description" class="form-label fw-bold">Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter product description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="inventory-qty" class="form-label fw-bold">Inventory Qty</label>
+                            <input type="number" class="form-control" id="inventory-qty" name="inventory-qty" placeholder="Enter inventory qty" oninput="updateStatus()">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="normal-threshold" class="form-label fw-bold">Normal Threshold Qty</label>
+                            <input type="number" class="form-control" id="normal-threshold" name="normal-threshold" placeholder="Enter normal threshold qty" oninput="updateStatus()">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="low-threshold" class="form-label fw-bold">Low Threshold Qty</label>
+                            <input type="number" class="form-control" id="low-threshold" name="low-threshold" placeholder="Enter low threshold qty" oninput="updateStatus()">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="status" class="form-label fw-bold">Status</label>
+                            <input type="text" class="form-control" id="status" name="status" placeholder="Status" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="image-url" class="form-label fw-bold">Image URL</label>
+                            <input type="url" class="form-control" id="image-url" name="image-url" placeholder="Enter Google Drive image URL">
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col text-start">
+                            <input type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal" value="Delete">
+                        </div>
+                        <div class="col-md col-12 text-end">
+                            <a href="./inventory-overview.html" class="btn btn-light me-2">Cancel</a>
+                            <!-- NOTE: Change "type=button" to "type=submit" -->
+                            <input type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#confirm-modal" value="Save">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <!-- Delete Confirmation Modal -->
+            <div class="custom-modal modal fade" id="delete-modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="false">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content p-3">
+                        <div class="modal-header justify-content-center pb-1" style="border-bottom: none;">
+                            <h5 class="modal-title text-danger text-center fs-3 fw-light" id="deleteModalLabel">CONFIRM PRODUCT DELETION?</h5>
+                        </div>
+                        <div class="modal-body text-center">
+                            Are you sure you want to delete this product?
+                        </div>
+                        <div class="modal-footer justify-content-center text-center pt-1" style="border-top: none;">
+                            <form action=" " method="post">
+                                <input type="hidden" name="product-id" value="">
+                                <button type="button" class="btn btn-dark me-3" data-bs-dismiss="modal">Cancel</button>
+                                <!-- NOTE: Change "type=button" to "type=submit" -->
+                                <button type="button" class="btn btn-danger ms-3" id="confirmDelete" data-bs-toggle="modal" data-bs-target="#delete-success">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delete Successful Modal -->
+            <div class="custom-modal modal fade" id="delete-success" tabindex="-1" aria-labelledby="deleteSuccessfulModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content p-3">
+                        <div class="modal-header justify-content-center pb-1" style="border-bottom: none;">
+                            <h5 class="modal-title text-success text-center fs-3 fw-light" id="deleteSuccessfulModalLabel">PRODUCT DELETED</h5>
+                        </div>
+                        <div class="modal-body text-center">
+                            The product has been deleted successfully!
+                        </div>
+                        <div class="modal-footer justify-content-center text center pt-1" style="border-top: none;">
+                            <a href="./inventory-overview.html" class="btn btn-dark">Go to Inventory</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Confirmation Modal -->
+            <div class="custom-modal modal fade" id="confirm-modal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="false">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content p-3">
+                        <div class="modal-header justify-content-center pb-1" style="border-bottom: none;">
+                            <h5 class="modal-title text-success text-center fw-light" id="confirmModalLabel">CONFIRM PRODUCT DETAILS?</h5>
+                        </div>
+                        <div class="modal-body text-center">
+                            Are these details correct?
+                        </div>
+                        <div class="modal-footer justify-content-center text-center pt-1" style="border-top: none;">
+                            <form action=" " method="post">
+                                <input type="hidden" name="product-id" value="">
+                                <!-- NOTE: Change "type=button" to "type=submit" -->
+                                <button type="button" class="btn btn-success me-3" id="confirmEdit" data-bs-toggle="modal" data-bs-target="#edit-success">Save</button>
+                                <button type="button" class="btn btn-danger ms-3" data-bs-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Successful Modal -->
+            <div class="custom-modal modal fade" id="edit-success" tabindex="-1" aria-labelledby="editSuccessfulModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content p-3">
+                        <div class="modal-header justify-content-center pb-1" style="border-bottom: none;">
+                            <h5 class="modal-title text-success text-center fs-3 fw-light" id="editSuccessfulModalLabel">CHANGES SAVED</h5>
+                        </div>
+                        <div class="modal-body text-center">
+                            The product has been edited successfully!
+                        </div>
+                        <div class="modal-footer justify-content-center text center pt-1" style="border-top: none;">
+                            <a href="./inventory-overview.html" class="btn btn-dark">Go to Inventory</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+        <script src="../assets/js/script.js"></script>
+    </footer>
+
+</body>
+
+</html>
